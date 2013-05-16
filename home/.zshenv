@@ -1,2 +1,2 @@
 # Load RVM
-source /Users/chris/.rvm/scripts/rvm
+source /Users/jeremy_hinkle/.rvm/scripts/rvm

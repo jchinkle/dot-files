@@ -18,6 +18,7 @@
   autosquash = true
 [merge]
   summary = true
+	tool = diffmerge
 [color]
   diff = auto
   status = auto
@@ -56,3 +57,12 @@
   sm  = submodule
   smu = submodule foreach git pull origin master
   ap  = add -u -p
+[mergetool "diffmerge"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/diffmerge $LOCAL $REMOTE

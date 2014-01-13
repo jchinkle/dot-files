@@ -69,7 +69,7 @@ colorscheme solarized
 " change status bar based on current mode
 if version >= 700
   au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
-  au InsertLeave * hi StatusLine ctermbg=240 ctermfg=2
+  au InsertLeave * hi StatusLine ctermbg=0 ctermfg=2
 endif
 
 " clojure: turn on rainbow parenthesis

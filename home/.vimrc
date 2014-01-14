@@ -4,7 +4,7 @@
 call pathogen#infect()
 call pathogen#helptags()
 
-set shell=bash
+set shell=/bin/bash\ -i
 
 syntax on                         " show syntax highlighting
 filetype plugin indent on

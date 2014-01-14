@@ -154,6 +154,7 @@ function! RenameFile()
     redraw!
   endif
 endfunction
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 map <leader>n :call RenameFile()<cr>
 
 map <Leader>t :call RunCurrentSpecFile()<CR>

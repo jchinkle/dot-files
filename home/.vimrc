@@ -157,7 +157,13 @@ endfunction
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 map <leader>n :call RenameFile()<cr>
 
+function! RunAllSpecs()
+  call SetLastSpecCommand('spec')
+  call RunSpecs('spec')
+endfunction
+
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>T :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
+map <Leader>r :call RunAllSpecs()<CR>
 

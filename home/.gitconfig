@@ -57,6 +57,7 @@
   sm  = submodule
   smu = submodule foreach git pull origin master
   ap  = add -u -p
+  cam = commit -am
 [mergetool "diffmerge"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
 	trustExitCode = true

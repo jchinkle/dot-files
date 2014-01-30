@@ -30,6 +30,7 @@ set list listchars=tab:»·,trail:· " show extra space characters
 set clipboard=unnamed             " use the system clipboard
 set wildmenu                      " enable bash style tab completion
 set wildmode=list:longest,full
+set relativenumber
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -65,6 +66,7 @@ colorscheme solarized
 " highlight Pmenu        ctermbg=240 ctermfg=12
 " highlight PmenuSel     ctermbg=0   ctermfg=3
 " highlight SpellBad     ctermbg=0   ctermfg=1
+
 
 " change status bar based on current mode
 if version >= 700
@@ -128,9 +130,9 @@ endif
 
 " jump to last position in file
 autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
 
 " multi-purpose tab key (auto-complete)
 function! InsertTabWrapper()
@@ -167,3 +169,21 @@ map <Leader>T :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>r :call RunAllSpecs()<CR>
 
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=3\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=3\x7\<Esc>\\"
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
+
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber

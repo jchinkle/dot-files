@@ -187,3 +187,7 @@ nnoremap <C-n> :call NumberToggle()<cr>
 
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
+
+map <Leader>= :Tab /=<CR>
+map <Leader>h :Tab /=><CR>
+map <Leader>: :Tab /:<CR>

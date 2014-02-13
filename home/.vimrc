@@ -164,13 +164,10 @@ function! RunAllSpecs()
   call RunSpecs('spec')
 endfunction
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>T :call RunNearestSpec()<CR>
+map <Leader>T :call RunCurrentSpecFile()<CR>
+map <Leader>t :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>r :call RunAllSpecs()<CR>
-
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=3\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=3\x7\<Esc>\\"
 
 function! NumberToggle()
   if(&relativenumber == 1)

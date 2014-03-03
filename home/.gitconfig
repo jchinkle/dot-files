@@ -13,7 +13,7 @@
   statusHints = false
 [push]
   config = default
-  default = tracking
+  default = simple
 [rebase]
   autosquash = true
 [merge]
@@ -46,7 +46,7 @@
   bam = branch --merged origin/master
   l   = log --pretty='format:%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %s%C(red)%d%C(reset) %C(green)%an%C(reset), %C(cyan)%ar%C(reset)' --date=short
   lp  = "!source ~/.githelpers && pretty_git_log"
-  s   = status -s -b
+  s   = status
   c   = commit -v
   co  = checkout
   w   = whatchanged --decorate

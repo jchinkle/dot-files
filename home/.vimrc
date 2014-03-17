@@ -26,7 +26,7 @@ set vb                            " enable visual bell (disable audio bell)
 set ruler                         " show row and column in footer
 set scrolloff=2                   " minimum lines above/below cursor
 set laststatus=2                  " always show status bar
-set list listchars=tab:»·,trail:· " show extra space characters
+" set list listchars=tab:»·,trail:· " show extra space characters
 set wildmenu                      " enable bash style tab completion
 set wildmode=list:longest,full
 set relativenumber
@@ -187,3 +187,5 @@ autocmd InsertLeave * :set relativenumber
 map <Leader>= :Tab /=<CR>
 map <Leader>h :Tab /=><CR>
 map <Leader>: :Tab /:<CR>
+
+map <Leader>c [m0<c-v>%I#

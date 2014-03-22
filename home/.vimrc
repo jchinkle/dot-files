@@ -171,18 +171,14 @@ map <Leader>r :call RunAllSpecs()<CR>
 function! NumberToggle()
   if(&relativenumber == 1)
     set number
+    set relativenumber!
   else
+    set number
     set relativenumber
   endif
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
-
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
-
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
 
 map <Leader>= :Tab /=<CR>
 map <Leader>h :Tab /=><CR>

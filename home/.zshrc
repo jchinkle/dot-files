@@ -10,6 +10,7 @@ alias dbm="bundle exec rake db:migrate"
 alias dbtp="bundle exec rake db:test:prepare"
 alias bi="bundle install"
 alias spec="bundle exec rspec"
+alias be='bundle exec'
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each

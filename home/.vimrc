@@ -156,6 +156,7 @@ function! RenameFile()
   endif
 endfunction
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:jslint_command = 'call Send_to_Tmux("rake jslint\n")'
 map <leader>n :call RenameFile()<cr>
 
 function! RunAllSpecs()
@@ -163,10 +164,16 @@ function! RunAllSpecs()
   call RunSpecs('spec')
 endfunction
 
+function! RunJSLint()
+  write
+  execute g:jslint_command
+endfunction
+
 map <Leader>T :call RunCurrentSpecFile()<CR>
 map <Leader>t :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>r :call RunAllSpecs()<CR>
+map <Leader>j :call RunJSLint()<CR>
 
 function! NumberToggle()
   if(&relativenumber == 1)

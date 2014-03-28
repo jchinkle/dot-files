@@ -2,13 +2,14 @@
 ZSH=$HOME/.oh-my-zsh
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-# alias pg="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log"
+alias pg="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log"
 
 alias gitk='gitk 2>/dev/null'
 
 alias dbm="bundle exec rake db:migrate"
 alias dbtp="bundle exec rake db:test:prepare"
 alias bi="bundle install"
+alias be="bundle exec"
 alias spec="bundle exec rspec"
 alias be='bundle exec'
 # Set name of the theme to load.

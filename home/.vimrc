@@ -205,7 +205,7 @@ map <Leader>h :Tab /=><CR>
 map <Leader>: :Tab /:<CR>
 
 " map <Tab> :A<CR>
-map <Tab> :w<CR>:A<CR>
+map <Tab> <C-w><C-w>
 
 map <Leader>c [m0<c-v>%I#
 

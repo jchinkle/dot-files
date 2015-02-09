@@ -11,12 +11,17 @@ alias dbtp="bundle exec rake db:test:prepare"
 alias bi="bundle install"
 alias be="bundle exec"
 alias spec="bundle exec rspec"
+alias rspec="bundle exec rspec"
 alias be='bundle exec'
+alias tci="bundle exec rake teamcity:ci"
+alias ctags="`brew --prefix`/bin/ctags"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+
+set -o vi
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -81,3 +86,5 @@ bindkey -v
 
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  
+. `brew --prefix`/etc/profile.d/z.sh

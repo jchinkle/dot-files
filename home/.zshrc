@@ -1,9 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-alias pg="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log"
-
 alias gitk='gitk 2>/dev/null'
 
 alias dbm="bundle exec rake db:migrate"
@@ -14,7 +11,7 @@ alias spec="bundle exec rspec"
 alias rspec="bundle exec rspec"
 alias be='bundle exec'
 alias tci="bundle exec rake teamcity:ci"
-alias ctags="`brew --prefix`/bin/ctags"
+#alias ctags="`brew --prefix`/bin/ctags"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -85,6 +82,6 @@ bindkey -v
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  
-. `brew --prefix`/etc/profile.d/z.sh
+
+eval "$(rbenv init -)"

@@ -1,0 +1,13 @@
+<Plug>(shot-f-F)	shot_f.txt	/*<Plug>(shot-f-F)*
+<Plug>(shot-f-T)	shot_f.txt	/*<Plug>(shot-f-T)*
+<Plug>(shot-f-f)	shot_f.txt	/*<Plug>(shot-f-f)*
+<Plug>(shot-f-t)	shot_f.txt	/*<Plug>(shot-f-t)*
+shot-f-bugs	shot_f.txt	/*shot-f-bugs*
+shot-f-changelog	shot_f.txt	/*shot-f-changelog*
+shot-f-contents	shot_f.txt	/*shot-f-contents*
+shot-f-examples	shot_f.txt	/*shot-f-examples*
+shot-f-interface	shot_f.txt	/*shot-f-interface*
+shot-f-introduction	shot_f.txt	/*shot-f-introduction*
+shot-f-mappings	shot_f.txt	/*shot-f-mappings*
+shot-f-variables	shot_f.txt	/*shot-f-variables*
+shot-f.txt	shot_f.txt	/*shot-f.txt*

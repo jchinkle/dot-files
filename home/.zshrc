@@ -11,6 +11,8 @@ alias spec="bundle exec rspec"
 alias rspec="bundle exec rspec"
 alias be='bundle exec'
 alias tci="bundle exec rake teamcity:ci"
+alias stop_cassandra="launchctl stop homebrew.mxcl.cassandra"
+alias start_cassandra="launchctl start homebrew.mxcl.cassandra"
 #alias ctags="`brew --prefix`/bin/ctags"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

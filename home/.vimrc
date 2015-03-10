@@ -203,7 +203,8 @@ nnoremap <C-n> :call NumberToggle()<cr>
 map <Leader>= :Tab /=<CR>
 map <Leader>h :Tab /=><CR>
 map <Leader>: :Tab /:<CR>
-
+map <Leader>[ :Bashrockets<CR>
+map <Leader>] :Hashrockets<CR>
 " map <Tab> :A<CR>
 map <Tab> <C-w><C-w>
 

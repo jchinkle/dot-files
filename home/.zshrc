@@ -10,7 +10,7 @@ alias be="bundle exec"
 alias spec="bundle exec rspec"
 alias rspec="bundle exec rspec"
 alias be='bundle exec'
-alias tci="bundle exec rake teamcity:ci"
+alias jspec="RAILS_ENV=test bundle exec rake spec:javascript"
 alias stop_cassandra="launchctl stop homebrew.mxcl.cassandra"
 alias start_cassandra="launchctl start homebrew.mxcl.cassandra"
 #alias ctags="`brew --prefix`/bin/ctags"

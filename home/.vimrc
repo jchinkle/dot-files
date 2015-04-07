@@ -165,6 +165,11 @@ function! RunAllSpecs()
   call RunSpecs('spec')
 endfunction
 
+function! RunJSSpecs()
+  write
+  execute 'call Send_to_Tmux("RAILS_ENV=test bundle exec rake spec:javascript\n")'
+endfunction
+
 function! RunJSLint()
   write
   let a:jslint_files = ""
@@ -185,8 +190,9 @@ map <Leader>T :call RunCurrentSpecFile()<CR>
 map <Leader>t :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>r :call RunAllSpecs()<CR>
-map <Leader>J :call RunJSLint()<CR>
-map <Leader>j :call RunJSLintFile()<CR>
+" map <Leader>J :call RunJSLint()<CR>
+" map <Leader>j :call RunJSLintFile()<CR>
+map <Leader>j :call RunJSSpecs()<CR>
 
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -212,3 +218,8 @@ map <Leader>c [m0<c-v>%I#
 
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
+
+autocmd FileType slim set list
+autocmd FileType slimbars set list
+autocmd BufNewFile,BufRead *.slimbars set filetype=slim
+

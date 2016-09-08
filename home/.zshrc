@@ -91,9 +91,9 @@ bindkey -v
 export RAILS_SECRET_TOKEN="3b7cd727ee24e8444053437c36cc66c3"
 
 
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  
-
 #
 PATH=/usr/local/bin:$PATH
 PATH=$PATH:/Users/jeremy_hinkle/terraform
 PATH=$PATH:/Users/jeremy_hinkle/packer
+
+source /Users/jeremy_hinkle/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

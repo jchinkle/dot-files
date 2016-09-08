@@ -207,8 +207,10 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
 map <Leader>= :Tab /=<CR>
-map <Leader>h :Tab /=><CR>
+map <Leader>ho :Tab /=><CR>
 map <Leader>: :Tab /:<CR>
+map <Leader>hn :Tabularize/\w:\zs/l0l1<CR>`
+
 map <Leader>[ :Bashrockets<CR>
 map <Leader>] :Hashrockets<CR>
 " map <Tab> :A<CR>
@@ -223,3 +225,27 @@ autocmd FileType slim setlocal list
 autocmd FileType slimbars setlocal list
 autocmd BufNewFile,BufRead *.slimbars set filetype=slim
 
+map <Leader>z :! ctags -R<CR>
+map <Leader>i :r ~/.initialize.rb<CR>
+
+function! MarkWindowSwap()
+    let g:markedWinNum = winnr()
+endfunction
+
+function! DoWindowSwap()
+    "Mark destination
+    let curNum = winnr()
+    let curBuf = bufnr( "%" )
+    exe g:markedWinNum . "wincmd w"
+    "Switch to source and shuffle dest->source
+    let markedBuf = bufnr( "%" )
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' curBuf
+    "Switch to dest and shuffle source->dest
+    exe curNum . "wincmd w"
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' markedBuf 
+endfunction
+
+nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
+nmap <silent> <leader>pw :call DoWindowSwap()<CR>

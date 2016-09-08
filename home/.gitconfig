@@ -9,6 +9,7 @@
   editor = vim -f
   autocrlf = input
   safecrlf = true
+	excludesfile = /Users/jeremy_hinkle/.gitignore
 [advice]
   statusHints = false
 [push]

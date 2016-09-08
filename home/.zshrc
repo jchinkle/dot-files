@@ -1,18 +1,22 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 alias gitk='gitk 2>/dev/null'
 
-alias dbm="bundle exec rake db:migrate"
-alias dbtp="bundle exec rake db:test:prepare"
-alias bi="bundle install"
-alias be="bundle exec"
-alias spec="bundle exec rspec"
-alias rspec="bundle exec rspec"
-alias be='bundle exec'
-alias jspec="RAILS_ENV=test bundle exec rake spec:javascript"
-alias stop_cassandra="launchctl stop homebrew.mxcl.cassandra"
-alias start_cassandra="launchctl start homebrew.mxcl.cassandra"
+alias dbm="rbenv exec bundle exec bin/rake db:migrate"
+alias dbtp="rbenv exec bundle exec bin/rake db:test:prepare"
+alias bi="rbenv exec bundle install"
+alias be="rbenv exec bundle exec"
+alias spec="rbenv exec bundle exec rspec"
+alias rspec="rbenv exec bundle exec rspec"
+alias rot="rbenv exec bundle exec bin/rake deployment:run_ordered_tasks"
+alias jspec="RAILS_ENV=test rbenv exec bundle exec rake spec:javascript"
+#alias stop_cassandra="launchctl stop homebrew.mxcl.cassandra"
+#alias start_cassandra="launchctl start homebrew.mxcl.cassandra"
+alias clob="rbenv exec bundle exec bin/rake assets:clobber"
 #alias ctags="`brew --prefix`/bin/ctags"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -82,8 +86,14 @@ bindkey -v
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+#
+
+export RAILS_SECRET_TOKEN="3b7cd727ee24e8444053437c36cc66c3"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  
 
-eval "$(rbenv init -)"
+#
+PATH=/usr/local/bin:$PATH
+PATH=$PATH:/Users/jeremy_hinkle/terraform
+PATH=$PATH:/Users/jeremy_hinkle/packer

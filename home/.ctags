@@ -1,0 +1,13 @@
+--exclude=.git
+--exclude=.bundle
+--exclude=log
+--exclude=tmp
+--exclude=node_modules
+-R
+--tag-relative=yes
+--exclude=*.min.js
+--exclude=jquery.*.js
+--exclude=jquery-*.js
+--exclude=vendor
+--exclude=public
+--languages=-html

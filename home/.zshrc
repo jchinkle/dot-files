@@ -6,15 +6,19 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 alias gitk='gitk 2>/dev/null'
 
 alias dbm="bin/rake db:migrate"
+alias dbr="bin/rake db:rollback"
 alias dbtp="bin/rake db:test:prepare"
 alias bi="bundle install"
 alias be="bundle exec"
-alias spec="rspec"
+alias spec="bin/rspec"
+alias rspec="bin/rspec"
 alias rot="bin/rake deployment:run_ordered_tasks"
 alias jspec="RAILS_ENV=test bin/rake spec:javascript"
 #alias stop_cassandra="launchctl stop homebrew.mxcl.cassandra"
 #alias start_cassandra="launchctl start homebrew.mxcl.cassandra"
 alias clob="bin/rake assets:clobber"
+alias ctags="`brew --prefix`/bin/ctags"
+alias lucropg="psql -h 0.0.0.0 -p 5432 -U postgres -d lucro_dev"
 #alias ctags="`brew --prefix`/bin/ctags"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -98,3 +102,5 @@ source /Users/jeremy_hinkle/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 PATH=/Users/jeremy_hinkle/.rbenv/shims:$PATH
 eval "$(rbenv init -)"
+
+stty icrnl

@@ -155,14 +155,14 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
-let g:jslint_command = 'call Send_to_Tmux("rake jslint {jslint_files}\n")'
+let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
+let g:jslint_command = 'call Send_to_Tmux("bin/rake jslint {jslint_files}\n")'
 
 map <leader>n :call RenameFile()<cr>
 
 function! RunAllSpecs()
-  call SetLastSpecCommand('spec')
-  call RunSpecs('spec')
+  write
+  execute 'call Send_to_Tmux("bin/rspec spec --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
 endfunction
 
 function! RunJSSpecs()
@@ -193,6 +193,7 @@ map <Leader>r :call RunAllSpecs()<CR>
 " map <Leader>J :call RunJSLint()<CR>
 " map <Leader>j :call RunJSLintFile()<CR>
 map <Leader>j :call RunJSSpecs()<CR>
+map <leader>q :cg quickfix.out \| cwindow<CR>
 
 function! NumberToggle()
   if(&relativenumber == 1)

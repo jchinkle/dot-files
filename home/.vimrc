@@ -118,6 +118,9 @@ noremap <C-l> :nohlsearch<CR>
 " map %% to current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+"map > :cn<cr>
+"map < :cp<cr>
+
 " toggle spell check with <F5>
 map <F5> :setlocal spell! spelllang=en_us<cr>
 imap <F5> <ESC>:setlocal spell! spelllang=en_us<cr>
@@ -150,24 +153,29 @@ function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'))
   if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
+    exec ':Move ' . new_name
   endif
 endfunction
-let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
-let g:jslint_command = 'call Send_to_Tmux("bin/rake jslint {jslint_files}\n")'
 
 map <leader>n :call RenameFile()<cr>
+
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:jslint_command = 'call Send_to_Tmux("rake jslint {jslint_files}\n")'
+
 
 function! RunAllSpecs()
   write
   execute 'call Send_to_Tmux("bin/rspec spec --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
 endfunction
 
+function! RunAllAllSpecs()
+  write
+  execute 'call Send_to_Tmux("spec spec --exclude-pattern \"\"\n")'
+endfunction
+
 function! RunJSSpecs()
   write
-  execute 'call Send_to_Tmux("RAILS_ENV=test bundle exec rake spec:javascript\n")'
+  execute 'call Send_to_Tmux("bin/rake teaspoon\n")'
 endfunction
 
 function! RunJSLint()
@@ -190,6 +198,7 @@ map <Leader>T :call RunCurrentSpecFile()<CR>
 map <Leader>t :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>r :call RunAllSpecs()<CR>
+map <Leader>R :call RunAllAllSpecs()<CR>
 " map <Leader>J :call RunJSLint()<CR>
 " map <Leader>j :call RunJSLintFile()<CR>
 map <Leader>j :call RunJSSpecs()<CR>

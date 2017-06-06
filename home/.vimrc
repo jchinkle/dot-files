@@ -159,13 +159,13 @@ endfunction
 
 map <leader>n :call RenameFile()<cr>
 
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec} --color --format Fuubar --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
 let g:jslint_command = 'call Send_to_Tmux("rake jslint {jslint_files}\n")'
 
 
 function! RunAllSpecs()
   write
-  execute 'call Send_to_Tmux("bin/rspec spec --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
+  execute 'call Send_to_Tmux("bin/rspec spec --color --format Fuubar --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
 endfunction
 
 function! RunAllAllSpecs()

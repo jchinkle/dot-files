@@ -76,11 +76,14 @@ function! s:shot_f(ft)
     endwhile
 
     if mode ==# 'n'
-      return "\<Esc>" . cnt . a:ft . c
+      if v:count >= 1
+        return "\<Esc>" . cnt . a:ft . c
+      endif
+      return cnt . a:ft . c
     elseif mode ==? 'v' || mode ==# "\<C-v>"
       return "\<Esc>" . 'gv' . cnt . a:ft . c
     elseif mode ==# 'no'
-      return "\<Esc>" . cnt . v:operator . a:ft . c
+      return "\<Esc>" . '"' . v:register . cnt . v:operator . a:ft . c
     endif
   finally
     call s:finalize()
@@ -122,13 +125,13 @@ function! s:highlight_one_of_each_char(forward, count)
   for cur_col in list
     let cur_char = line[cur_col]
     let char_dict[cur_char] = get(char_dict, cur_char, 0) + 1
-    if char_dict[cur_char] == a:count
+    if cur_char =~ '[\x01-\x7E]' && char_dict[cur_char] == a:count
       call matchadd(cur_char =~ '[[:blank:]]' ? 'ShotFBlank' : 'ShotFGraph', printf('\%%%dl\%%%dc', lnum, cur_col+1))
     endif
     let s:max_count = char_dict[cur_char] > s:max_count ? char_dict[cur_char] : s:max_count
   endfor
 
-  redraw!
+  redraw
 endfunction
 
 function! s:disable_highlight()

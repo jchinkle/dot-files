@@ -1,6 +1,6 @@
 [user]
-  name  = Jeremy Hinkle
-  email = jchinkle@gmail.com
+	name = Jeremy Hinkle
+	email = jchinkle@gmail.com
 [github]
   user = jchinkle
 [core]
@@ -81,3 +81,8 @@
 	trustExitCode = true
 [mergetool "bc3"]
 	trustExitCode = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

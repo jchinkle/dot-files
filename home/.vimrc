@@ -1,10 +1,57 @@
 " .vimrc
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" load up pathogen and all bundles
-call pathogen#infect()
-call pathogen#helptags()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" My Plugins:
+Plugin 'mileszs/ack.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'adelarsq/vim-matchit'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/ruby-matchit'
+Plugin 'danchoi/ruby_bashrockets.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'godlygeek/tabular'
+Plugin 'jgdavey/tslime.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-dotenv'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'tpope/vim-endwise'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-repeat'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'deris/vim-shot-f'
+Plugin 'tpope/vim-surround'
+Plugin 'guns/xterm-color-table.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 set shell=/bin/bash\ -i
+
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack!
+cnoreabbrev aG Ack!
+cnoreabbrev Ag Ack!
+cnoreabbrev AG Ack!
+cnoreabbrev Ack Ack!
 
 syntax on                         " show syntax highlighting
 filetype plugin indent on
@@ -44,11 +91,15 @@ set statusline=%F%m%r%h%w\ %{fugitive#statusline()}\ [%l,%c]\ [%L,%p%%]
 "set background=dark
 "colorscheme base16-railscasts
 set background=dark
-" solarized options 
+" solarized options
 let g:solarized_termcolors = 256
 "let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
+let g:airline_solarized_bg='dark'
 colorscheme solarized
+
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+set list
 
 " set up some custom colors
 " highlight clear SignColumn
@@ -65,6 +116,7 @@ colorscheme solarized
 " highlight Pmenu        ctermbg=240 ctermfg=12
 " highlight PmenuSel     ctermbg=0   ctermfg=3
 " highlight SpellBad     ctermbg=0   ctermfg=1
+highlight SpecialKey ctermbg=darkred guibg=darkred ctermfg=white
 
 
 " change status bar based on current mode
@@ -173,9 +225,17 @@ function! RunAllAllSpecs()
   execute 'call Send_to_Tmux("spec spec --exclude-pattern \"\"\n")'
 endfunction
 
+function! RunAllJSSpecs()
+  write
+  execute 'call Send_to_Tmux("yarn jest\n")'
+endfunction
+
 function! RunJSSpecs()
   write
-  execute 'call Send_to_Tmux("bin/rake teaspoon\n")'
+  let l:spec = @%
+  let l:jestcommand = substitute('call Send_to_Tmux("yarn jest {spec}\n")', "{spec}", l:spec, "g")
+  call SetLastSpecCommand(l:jestcommand)
+  execute(l:jestcommand)
 endfunction
 
 function! RunJSLint()
@@ -191,7 +251,11 @@ function! RunJSLintFile()
 endfunction
 
 function! InJSFile()
-  return match(expand("%"), ".js$") != -1 
+  return match(expand("%"), ".js$") != -1
+endfunction
+
+function! GitS()
+  execute 'call Send_to_Tmux("git s\n")'
 endfunction
 
 map <Leader>T :call RunCurrentSpecFile()<CR>
@@ -202,7 +266,9 @@ map <Leader>R :call RunAllAllSpecs()<CR>
 " map <Leader>J :call RunJSLint()<CR>
 " map <Leader>j :call RunJSLintFile()<CR>
 map <Leader>j :call RunJSSpecs()<CR>
+map <Leader>J :call RunAllJSSpecs()<CR>
 map <leader>q :cg quickfix.out \| cwindow<CR>
+map <Leader>s :call GitS()<CR>
 
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -216,10 +282,11 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
 
-map <Leader>= :Tab /=<CR>
+map <Leader>= :Tab / =<CR>
 map <Leader>ho :Tab /=><CR>
 map <Leader>: :Tab /:<CR>
 map <Leader>hn :Tabularize/\w:\zs/l0l1<CR>`
+map <Leader>w :%s/\s\+$//e<CR>:nohl<CR>
 
 map <Leader>[ :Bashrockets<CR>
 map <Leader>] :Hashrockets<CR>
@@ -254,7 +321,7 @@ function! DoWindowSwap()
     "Switch to dest and shuffle source->dest
     exe curNum . "wincmd w"
     "Hide and open so that we aren't prompted and keep history
-    exe 'hide buf' markedBuf 
+    exe 'hide buf' markedBuf
 endfunction
 
 nmap <silent> <leader>mw :call MarkWindowSwap()<CR>

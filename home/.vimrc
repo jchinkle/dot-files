@@ -98,6 +98,10 @@ let g:solarized_contrast = "high"
 let g:airline_solarized_bg='dark'
 colorscheme solarized
 
+"tslime:
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
+
 set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list
 
@@ -234,7 +238,6 @@ function! RunJSSpecs()
   write
   let l:spec = @%
   let l:jestcommand = substitute('call Send_to_Tmux("yarn jest {spec}\n")', "{spec}", l:spec, "g")
-  call SetLastSpecCommand(l:jestcommand)
   execute(l:jestcommand)
 endfunction
 

@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/jeremy_hinkle/.homesick/repos/dot-files.git/home/.vim/bundle/tslime'
+let g:netrw_dirhist_2='/Users/jeremy_hinkle/dev/lucro/lib/tasks'
+let g:netrw_dirhist_3='/Users/jeremy_hinkle/dev/lucro'
+let g:netrw_dirhist_4='/Users/jeremy_hinkle'
+let g:netrw_dirhist_5='/Users/jeremy_hinkle/dev'
+let g:netrw_dirhist_6='/Users/jeremy_hinkle/dev/lucro'

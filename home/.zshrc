@@ -98,9 +98,8 @@ PATH=$PATH:/usr/local/bin
 PATH=$PATH:/Users/jeremy_hinkle/terraform
 PATH=$PATH:/Users/jeremy_hinkle/packer
 
-source /Users/jeremy_hinkle/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 PATH=/Users/jeremy_hinkle/.rbenv/shims:$PATH
 eval "$(rbenv init -)"
 
 stty icrnl
+source /Users/jeremy_hinkle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

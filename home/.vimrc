@@ -16,7 +16,6 @@ Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'adelarsq/vim-matchit'
-Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/ruby-matchit'
 Plugin 'danchoi/ruby_bashrockets.vim'
 Plugin 'tpope/vim-fugitive'
@@ -39,6 +38,8 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'deris/vim-shot-f'
 Plugin 'tpope/vim-surround'
 Plugin 'guns/xterm-color-table.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -186,6 +187,10 @@ if exists('+colorcolumn')
   set colorcolumn=80
 endif
 
+augroup templates
+  autocmd BufNewFile *.jsx 0r ~/.vim/templates/skeleton.jsx
+augroup END
+
 " jump to last position in file
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -215,18 +220,18 @@ endfunction
 
 map <leader>n :call RenameFile()<cr>
 
-let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec} --color --format Fuubar --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
+let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec} --color --format Fuubar --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
 let g:jslint_command = 'call Send_to_Tmux("rake jslint {jslint_files}\n")'
 
 
 function! RunAllSpecs()
   write
-  execute 'call Send_to_Tmux("bin/rspec spec --color --format Fuubar --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
+  execute 'call Send_to_Tmux("bundle exec rspec spec --color --format Fuubar --require ~/quickfix.rb --format QuickfixFormatter --out quickfix.out\n")'
 endfunction
 
 function! RunAllAllSpecs()
   write
-  execute 'call Send_to_Tmux("spec spec --exclude-pattern \"\"\n")'
+  execute 'call Send_to_Tmux("bundle exec rspec spec --exclude-pattern \"\"\n")'
 endfunction
 
 function! RunAllJSSpecs()
